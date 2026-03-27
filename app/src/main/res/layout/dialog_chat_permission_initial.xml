@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@android:color/white">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Verification Required"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="To ensure you're within the approved service area for this job, please enable location access.\n\nThis helps us match you with the right opportunities and ensure a smooth application process."
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:lineSpacingExtra="4dp"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnOkay"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="Okay"
+        android:textColor="@android:color/white"
+        android:background="#4CAF50"
+        android:textAllCaps="false"
+        android:textSize="16sp" />
+
+</LinearLayout>
+

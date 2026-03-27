@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Splash screen logo — large "C" with dot (Purple)
+    Used on the app launch/loading screen
+    Design: Purple gradient "C" arc with dot on white background
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Bold "C" arc — thick, open on the right side -->
+    <path
+        android:pathData="
+        M96,38
+        C87.5,24.5 72.0,16.0 60.0,16.0
+        C35.2,16.0 15.0,36.2 15.0,60.0
+        C15.0,83.8 35.2,104.0 60.0,104.0
+        C72.0,104.0 87.5,95.5 96,82
+        L83.5,74.5
+        C78.0,83.0 69.5,90.0 60.0,90.0
+        C43.4,90.0 30.0,76.6 30.0,60.0
+        C30.0,43.4 43.4,30.0 60.0,30.0
+        C69.5,30.0 78.0,37.0 83.5,45.5
+        Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="16"
+                android:endY="104"
+                android:type="linear">
+                <item android:offset="0" android:color="#A78BFA" />
+                <item android:offset="1" android:color="#5B3FD9" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Main dot — purple -->
+    <path
+        android:pathData="M60,54 A6,6 0 1,0 60,66 A6,6 0 1,0 60,54 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="54"
+                android:endY="66"
+                android:type="linear">
+                <item android:offset="0" android:color="#A78BFA" />
+                <item android:offset="1" android:color="#5B3FD9" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>
+

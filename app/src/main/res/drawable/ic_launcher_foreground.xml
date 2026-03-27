@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Launcher icon foreground — "C" with dot
+    Adaptive icon canvas: 108dp × 108dp
+    Safe zone (visible area): center 72dp (from 18dp to 90dp)
+    Design: Bold Purple "C" arc with a dot in the center gap
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Bold "C" shape — centered in safe zone, scaled 90% to provide breathing room -->
+    <!-- Original safe zone 18->90 (72dp). New target ~22->86 (64dp) -->
+    <path
+        android:pathData="
+        M78.0,37.5
+        C72.5,28.0 62.5,22.0 54.0,22.0
+        C36.3,22.0 22.0,36.3 22.0,54.0
+        C22.0,71.7 36.3,86.0 54.0,86.0
+        C62.5,86.0 72.5,80.0 78.0,70.5
+        L70.0,66.0
+        C66.0,72.5 60.5,76.5 54.0,76.5
+        C41.6,76.5 31.5,66.4 31.5,54.0
+        C31.5,41.6 41.6,31.5 54.0,31.5
+        C60.5,31.5 66.0,35.5 70.0,42.0
+        Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="22"
+                android:endY="86"
+                android:type="linear">
+                <item android:offset="0" android:color="#A78BFA" />
+                <item android:offset="1" android:color="#5B3FD9" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Main dot in the center -->
+    <path
+        android:pathData="M54,49.0 A5.0,5.0 0 1,0 54,59.0 A5.0,5.0 0 1,0 54,49.0 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:startY="49.0"
+                android:endY="59.0"
+                android:type="linear">
+                <item android:offset="0" android:color="#A78BFA" />
+                <item android:offset="1" android:color="#5B3FD9" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+</vector>

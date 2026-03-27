@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Construct Connect</string>
+    <string name="star_icon">Star icon</string>
+    <string name="no_reviews_message">This user has no reviews yet.</string>
+
+    <!-- About / Profile Strings -->
+    <string name="member_since_format">Member since %1$s</string>
+    <string name="active_status_prefix"> • %1$s</string>
+    <string name="from_label">From %1$s</string>
+    <string name="avg_response_hours_one">%1$s hour</string>
+    <string name="avg_response_hours_many">%1$s hours</string>
+    <string name="total_reviews_one">(%1$d review)</string>
+    <string name="total_reviews_many">(%1$d reviews)</string>
+    <string name="no_languages">No languages added</string>
+    <string name="no_skills">No skills added</string>
+    <string name="fluent_label">fluent</string>
+    <string name="back">Back</string>
+
+    <!-- Onboarding / Permission Strings -->
+    <string name="desc_location_icon">Location services icon</string>
+</resources>

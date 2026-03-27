@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Main gradient background -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="135"
+                android:startColor="#8264FA"
+                android:centerColor="#7C5CE9"
+                android:endColor="#6B4EE6"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- Curved bottom with white background that overlaps -->
+    <item android:top="220dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/background_secondary" />
+            <corners
+                android:topLeftRadius="40dp"
+                android:topRightRadius="40dp" />
+        </shape>
+    </item>
+</layer-list>
+

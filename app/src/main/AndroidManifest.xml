@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Permissions for location tracking and internet access -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
+    <!-- Permission for accessing gallery images -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <!-- Notification permissions -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Battery optimization exemption request -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+
+    <!-- Keep device awake for continuous tracking -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".LocationTrackingApplication"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ConstructConnect">
+
+        <activity android:name=".auth.Splash" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".auth.Auth" android:exported="false" />
+        <activity android:name=".auth.TermsAndConditionsActivity" android:exported="false" />
+        <activity android:name=".auth.EmailVerificationActivity" android:exported="false" />
+        <activity android:name=".onboarding.OnboardingActivity" android:exported="false" />
+        <activity android:name=".MainActivity" android:exported="true">
+            <!-- Deep link support for email buttons -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Custom app scheme -->
+                <data android:scheme="constructionapp" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activities.LocationPermissionActivity" android:exported="false" />
+
+        <activity android:name=".ProfileActivity" android:exported="false" />
+        <activity android:name=".BuyerProfileActivity" android:exported="false" />
+        <activity android:name=".JobDetailsActivity" android:exported="false" />
+        <activity android:name=".OrderDetailsActivity" android:exported="false" />
+        <activity android:name=".DeliveryActivity" android:exported="false" />
+        <activity android:name=".ReviewActivity" android:exported="false" />
+        <activity android:name=".FileViewerActivity" android:exported="false" />
+        <activity android:name=".MediaViewerActivity" android:exported="false" />
+        <activity android:name=".activities.WithdrawalActivity" android:exported="false" />
+
+        <!-- Location tracking service -->
+        <service
+            android:name=".services.LocationTrackingService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
+        <!-- Boot receiver for restarting service after reboot, app update, etc. -->
+        <receiver
+            android:name=".receivers.LocationBootReceiver"
+            android:enabled="true"
+            android:exported="true"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Location Settings Changed Receiver - Auto-start when GPS enabled -->
+        <receiver
+            android:name=".receivers.LocationSettingsChangedReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Precise Location Alarm Receiver - Backup for exact interval tracking -->
+        <receiver
+            android:name=".location.PreciseLocationAlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.newconstructionappwithlocationtracking.PRECISE_LOCATION_ALARM" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Watchdog Alarm Receiver - 5-minute health checks for service recovery -->
+        <receiver
+            android:name=".location.WatchdogAlarmReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.example.newconstructionappwithlocationtracking.WATCHDOG_CHECK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Service Resurrection Receiver - Guaranteed restart after OEM kills -->
+        <receiver
+            android:name=".receivers.ServiceResurrectionReceiver"
+            android:enabled="true"
+            android:exported="false"
+            android:directBootAware="true">
+            <intent-filter>
+                <action android:name="com.example.newconstructionappwithlocationtracking.RESURRECT_SERVICE" />
+                <action android:name="com.example.newconstructionappwithlocationtracking.SERVICE_HEARTBEAT_CHECK" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Firebase Messaging Service for push notifications -->
+        <service
+            android:name=".services.FCMNotificationService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Location Tracking Init Provider - Auto-initializes tracking at earliest point -->
+        <provider
+            android:name=".providers.LocationTrackingInitProvider"
+            android:authorities="${applicationId}.locationtrackinginitprovider"
+            android:exported="false"
+            android:initOrder="100" />
+
+        <!-- Default notification channel -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="message_notifications" />
+
+        <!-- Default notification icon -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_notification_tracking" />
+
+        <!-- Default notification color -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "603092027551",
+    "firebase_url": "https://pakistan-construction-website-default-rtdb.firebaseio.com",
+    "project_id": "pakistan-construction-website",
+    "storage_bucket": "pakistan-construction-website.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:603092027551:android:dd1a661355df0e75b9faaa",
+        "android_client_info": {
+          "package_name": "com.example.newconstructionappwithlocationtracking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5hz4J62bHSre1yrmoxjb3F4COP0nHstM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,20 @@
+{
+  "name": "construct-connect-website",
+  "version": "1.0.0",
+  "description": "Construct Connect - App Download Website",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx live-server .",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": [
+    "construction",
+    "app",
+    "download",
+    "website"
+  ],
+  "author": "Construct Connect",
+  "license": "MIT"
+}
+

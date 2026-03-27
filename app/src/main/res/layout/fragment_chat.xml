@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_primary"
+    android:fitsSystemWindows="false">
+
+    <!-- Compact Chat Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_header_modern"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="12dp"
+        android:elevation="4dp">
+
+        <!-- Back Button -->
+        <FrameLayout
+            android:id="@+id/backButtonContainer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_header_icon"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/backArrow"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/white" />
+        </FrameLayout>
+
+        <!-- User Info Container -->
+        <LinearLayout
+            android:id="@+id/headerInfoContainer"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <!-- Avatar with Online Indicator -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+
+                <ImageView
+                    android:id="@+id/chatUserAvatar"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:src="@drawable/ic_profile_placeholder"
+                    android:scaleType="centerCrop"
+                    android:contentDescription="User avatar" />
+
+                <View
+                    android:id="@+id/onlineIndicator"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_gravity="bottom|end"
+                    android:background="@drawable/bg_online_indicator"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <!-- Name and Status -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+
+                <TextView
+                    android:id="@+id/chatUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/chatUserLastActive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Online"
+                    android:textColor="#FFFFFFCC"
+                    android:textSize="12sp"
+                    android:layout_marginTop="1dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Assign Job Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/assignJobButton"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:text="Assign Job"
+            android:textSize="11sp"
+            android:textColor="@color/colorPrimary"
+            android:fontFamily="sans-serif-medium"
+            app:backgroundTint="@color/white"
+            app:cornerRadius="16dp"
+            app:strokeWidth="0dp"
+            android:paddingHorizontal="12dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Loading indicator -->
+    <FrameLayout
+        android:id="@+id/loadingLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/background_primary"
+        android:visibility="gone">
+
+        <ProgressBar
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/colorPrimary" />
+    </FrameLayout>
+
+    <!-- Chat messages RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chatRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:background="@color/background_secondary" />
+
+    <!-- Image preview above input -->
+    <FrameLayout
+        android:id="@+id/imagePreviewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp">
+
+            <ImageView
+                android:id="@+id/imagePreview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <ProgressBar
+                android:id="@+id/imageUploadSpinner"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:visibility="gone"
+                android:indeterminateTint="@color/colorPrimary" />
+        </androidx.cardview.widget.CardView>
+    </FrameLayout>
+
+    <!-- Job preview container above input -->
+    <LinearLayout
+        android:id="@+id/jobPreviewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp">
+        <include layout="@layout/layout_job_preview_card" />
+    </LinearLayout>
+
+    <!-- Modern Message input and send -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="12dp"
+        android:background="@color/background_primary"
+        android:elevation="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Attachment Button -->
+        <FrameLayout
+            android:id="@+id/plusIconContainer"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/bg_attachment_button"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/plusIcon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_add"
+                app:tint="@color/colorPrimary" />
+        </FrameLayout>
+
+        <!-- Message Input Field -->
+        <EditText
+            android:id="@+id/messageInput"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/bg_input_modern"
+            android:hint="Type a message..."
+            android:textColorHint="@color/text_hint"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="18dp"
+            android:paddingVertical="12dp"
+            android:textSize="15sp"
+            android:inputType="textMultiLine|textCapSentences"
+            android:maxLines="4"
+            android:minHeight="48dp"
+            android:imeOptions="actionSend"
+            android:importantForAutofill="no" />
+
+        <!-- Send Button -->
+        <FrameLayout
+            android:id="@+id/sendButtonContainer"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_send_button"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:id="@+id/sendArrow"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_send"
+                app:tint="@color/white"
+                android:rotation="-45" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

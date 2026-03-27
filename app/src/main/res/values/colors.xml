@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Legacy colors (keep for compatibility) -->
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="light_gray">#FFF5F5F5</color>
+    <color name="dark_gray">#FF757575</color>
+    <color name="ripple_material_light">#1A8264FA</color>
+
+    <!-- ========================================== -->
+    <!-- PRIMARY BRAND COLORS - Modern Purple Theme -->
+    <!-- ========================================== -->
+    <color name="colorPrimary">#8264FA</color>
+    <color name="colorPrimaryDark">#6B4EE6</color>
+    <color name="colorPrimaryLight">#A78BFA</color>
+    <color name="colorPrimaryVeryLight">#EDE9FE</color>
+    <color name="colorAccent">#8264FA</color>
+    <color name="purple_primary">#8264FA</color>
+    <color name="primary_color">#8264FA</color>
+
+    <!-- ========================================== -->
+    <!-- BACKGROUND COLORS -->
+    <!-- ========================================== -->
+    <color name="background_primary">#FFFFFF</color>
+    <color name="background_secondary">#F8F9FC</color>
+    <color name="background_tertiary">#F1F3F8</color>
+    <color name="background_light">#FFFFFF</color>
+    <color name="background_card">#FFFFFF</color>
+    <color name="background_header">#8264FA</color>
+    <color name="background_input">#F5F7FA</color>
+    <color name="text_input_box_stroke">#E0E0E0</color>
+    <color name="background_chat_left">#F1F3F8</color>
+    <color name="background_chat_right">#8264FA</color>
+
+    <!-- ========================================== -->
+    <!-- TEXT COLORS -->
+    <!-- ========================================== -->
+    <color name="text_primary">#1A1D26</color>
+    <color name="text_secondary">#6B7280</color>
+    <color name="text_tertiary">#9CA3AF</color>
+    <color name="text_hint">#A0A6B1</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_link">#8264FA</color>
+    <color name="gray_text">#6B7280</color>
+
+    <!-- ========================================== -->
+    <!-- GRAY SCALE -->
+    <!-- ========================================== -->
+    <color name="gray_50">#F9FAFB</color>
+    <color name="gray_100">#F3F4F6</color>
+    <color name="gray_200">#E5E7EB</color>
+    <color name="gray_300">#D1D5DB</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="gray_500">#6B7280</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_700">#374151</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_900">#111827</color>
+    <color name="gray_light">#F5F5F5</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="darkGray">#616161</color>
+    <color name="lightGray">#E5E7EB</color>
+
+    <!-- ========================================== -->
+    <!-- SEMANTIC COLORS -->
+    <!-- ========================================== -->
+    <color name="success">#10B981</color>
+    <color name="success_light">#D1FAE5</color>
+    <color name="success_dark">#059669</color>
+    <color name="green_success">#10B981</color>
+    <color name="error">#EF4444</color>
+    <color name="error_light">#FEE2E2</color>
+    <color name="error_dark">#DC2626</color>
+    <color name="warning">#F59E0B</color>
+    <color name="warning_light">#FEF3C7</color>
+    <color name="info">#3B82F6</color>
+    <color name="info_light">#DBEAFE</color>
+
+    <!-- ========================================== -->
+    <!-- STATUS COLORS -->
+    <!-- ========================================== -->
+    <color name="status_active">#10B981</color>
+    <color name="status_delivered">#3B82F6</color>
+    <color name="status_completed">#8264FA</color>
+    <color name="status_canceled">#EF4444</color>
+    <color name="status_pending">#F59E0B</color>
+    <color name="online_indicator">#10B981</color>
+
+    <!-- ========================================== -->
+    <!-- BORDER & DIVIDER COLORS -->
+    <!-- ========================================== -->
+    <color name="border_color">#E5E7EB</color>
+    <color name="border_light">#F3F4F6</color>
+    <color name="divider">#E5E7EB</color>
+    <color name="divider_light">#F3F4F6</color>
+
+    <!-- ========================================== -->
+    <!-- SPECIAL COLORS -->
+    <!-- ========================================== -->
+    <color name="light_blue_background">#EDE9FE</color>
+    <color name="shadow_color">#1A000000</color>
+    <color name="overlay_dark">#80000000</color>
+    <color name="tab_selected">#8264FA</color>
+    <color name="tab_unselected">#9CA3AF</color>
+    <color name="rating_star">#FBBF24</color>
+    <color name="price_color">#059669</color>
+</resources>

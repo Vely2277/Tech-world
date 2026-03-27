@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:fitsSystemWindows="true">
+
+    <!-- Header Background -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
+        android:layout_height="280dp"
+        android:background="@drawable/bg_email_verification_header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Back Button -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_circle_white_transparent"
+        android:src="@drawable/ic_arrow_back"
+        android:padding="12dp"
+        android:contentDescription="Back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@android:color/white" />
+
+    <!-- Email Icon -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/emailIconCard"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="50dp"
+        app:cardElevation="12dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_email_verification"
+            app:tint="#3B82F6" />
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Main Content Card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contentCard"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        app:layout_constraintTop_toBottomOf="@id/emailIconCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp"
+            android:gravity="center_horizontal">
+
+            <!-- Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Verify Your Email"
+                android:textSize="26sp"
+                android:textColor="#1F2937"
+                android:textStyle="bold"
+                android:fontFamily="sans-serif-medium" />
+
+            <!-- Subtitle -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="We've sent a 6-digit code to"
+                android:textSize="15sp"
+                android:textColor="#6B7280"
+                android:gravity="center" />
+
+            <!-- Email Display -->
+            <TextView
+                android:id="@+id/emailText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="u***r@email.com"
+                android:textSize="15sp"
+                android:textColor="#3B82F6"
+                android:textStyle="bold"
+                android:gravity="center" />
+
+            <!-- OTP Input Container -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:weightSum="6">
+
+                <EditText
+                    android:id="@+id/otpInput1"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/otpInput2"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/otpInput3"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/otpInput4"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/otpInput5"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/otpInput6"
+                    style="@style/OtpInputStyle"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <!-- Error Text -->
+            <TextView
+                android:id="@+id/errorText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Invalid verification code"
+                android:textSize="14sp"
+                android:textColor="#EF4444"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <!-- Verify Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/verifyButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="28dp"
+                android:text="Verify Email"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:enabled="false"
+                android:alpha="0.5"
+                app:cornerRadius="14dp"
+                app:backgroundTint="#3B82F6"
+                app:elevation="4dp" />
+
+            <!-- Timer Text -->
+            <TextView
+                android:id="@+id/timerText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Resend code in 60s"
+                android:textSize="14sp"
+                android:textColor="#9CA3AF" />
+
+            <!-- Resend Button -->
+            <TextView
+                android:id="@+id/resendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Resend Code"
+                android:textSize="15sp"
+                android:textColor="#3B82F6"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:enabled="false"
+                android:alpha="0.5" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- Security Notice -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toBottomOf="@id/contentCard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_shield_check"
+            app:tint="#10B981" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="We'll never share your email with anyone"
+            android:textSize="13sp"
+            android:textColor="#6B7280" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

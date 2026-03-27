@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/background_secondary"
+    android:padding="16dp">
+
+    <!-- Helpful instruction for new users -->
+    <LinearLayout
+        android:id="@+id/profileHintText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_icon_circle"
+        android:backgroundTint="@color/colorPrimaryVeryLight"
+        android:padding="14dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="💡"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:text="Tap any section below to edit and complete your profile"
+            android:textSize="14sp"
+            android:textColor="@color/colorPrimaryDark" />
+    </LinearLayout>
+
+    <!-- Profile Header Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/background_primary"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:padding="0dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="top">
+
+            <!-- Profile Picture with Upload Capability -->
+            <FrameLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:foreground="?android:attr/selectableItemBackgroundBorderless"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/profileAvatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_avatar_placeholder"
+                    android:scaleType="centerCrop"
+                    android:background="@drawable/circle_bg" />
+
+                <!-- Camera Overlay for empty state -->
+                <View
+                    android:id="@+id/cameraOverlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/circle_bg"
+                    android:backgroundTint="#80000000"
+                    android:alpha="0.7"
+                    android:visibility="visible" />
+
+                <!-- Camera Icon for empty state -->
+                <ImageView
+                    android:id="@+id/cameraIcon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_camera"
+                    app:tint="@android:color/white"
+                    android:alpha="0.9"
+                    android:visibility="visible" />
+
+                <!-- Small edit icon for when profile picture exists -->
+                <ImageView
+                    android:id="@+id/editAvatarIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginBottom="2dp"
+                    android:src="@drawable/ic_edit"
+                    android:background="@drawable/circle_bg"
+                    android:backgroundTint="#6B46C1"
+                    android:padding="4dp"
+                    app:tint="@android:color/white"
+                    android:visibility="gone" />
+
+                <!-- Upload Progress -->
+                <ProgressBar
+                    android:id="@+id/uploadProgress"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp">
+
+                <!-- Name with Edit Icon -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/userNameText"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="User Name"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#111111" />
+
+                    <ImageView
+                        android:id="@+id/editNameIcon"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_edit"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        app:tint="#8264FA"
+                        android:layout_marginStart="8dp" />
+
+                </LinearLayout>
+
+                <!-- Activity Status -->
+                <TextView
+                    android:id="@+id/lastActiveText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Active now"
+                    android:textSize="12sp"
+                    android:textColor="#28A745"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Member Since -->
+                <TextView
+                    android:id="@+id/memberSinceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Member since Sep 2025"
+                    android:textSize="12sp"
+                    android:textColor="#666666"
+                    android:layout_marginTop="4dp" />
+
+                <!-- Rating and Reviews -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="6dp">
+
+                    <RatingBar
+                        android:id="@+id/profileRatingBar"
+                        style="?android:attr/ratingBarStyleSmall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:numStars="5"
+                        android:rating="0"
+                        android:progressTint="#FFC107" />
+
+                    <TextView
+                        android:id="@+id/totalReviewsText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="(0 reviews)"
+                        android:textSize="12sp"
+                        android:textColor="#666666"
+                        android:layout_marginStart="6dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Description Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardElevation="2dp"
+        app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/background_primary">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="About"
+                    android:textColor="@color/text_primary"
+                    android:textSize="16sp"
+                    android:fontFamily="sans-serif-medium" />
+                <ImageView
+                    android:id="@+id/editDescriptionIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="@color/colorPrimary"
+                    android:background="?android:attr/selectableItemBackgroundBorderless" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="You haven't added a description yet. Tap to edit."
+                android:textColor="#444444"
+                android:textSize="14sp"
+                android:lineSpacingExtra="2dp"
+                android:layout_marginTop="8dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Essentials Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:elevation="3dp"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Details"
+                android:textColor="#111111"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_location"
+                    app:tint="#8264FA" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Pakistan"
+                    android:textColor="#222222"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_calendar"
+                    app:tint="#8264FA" />
+                <TextView
+                    android:id="@+id/memberSinceText_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Member since Sep 2025"
+                    android:textColor="#222222"
+                    android:textSize="13sp"
+                    android:layout_marginStart="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/ic_time"
+                    app:tint="#8264FA" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Avg response"
+                    android:textColor="#555555"
+                    android:textSize="13sp"
+                    android:layout_marginStart="8dp" />
+                <TextView
+                    android:id="@+id/avgResponseText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1 hour"
+                    android:textColor="#222222"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="4dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Languages Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:elevation="3dp"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Languages Header with Edit Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Languages"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/editLanguagesIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#8264FA"
+                    android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+            </LinearLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                xmlns:flexbox="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/languagesContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                flexbox:flexWrap="wrap"
+                flexbox:alignItems="flex_start"
+                flexbox:justifyContent="flex_start" />
+
+            <!-- Add More Languages Hint -->
+            <TextView
+                android:id="@+id/addLanguagesHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ Add more languages"
+                android:textSize="12sp"
+                android:textColor="#8264FA"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Skills Card -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:elevation="3dp"
+        app:cardCornerRadius="12dp"
+        android:backgroundTint="#FFFFFF">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Skills Header with Edit Icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Skills"
+                    android:textColor="#111111"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/editSkillsIcon"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_edit"
+                    app:tint="#8264FA"
+                    android:background="?android:attr/selectableItemBackgroundBorderless" />
+
+            </LinearLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                xmlns:flexbox="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/skillsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                flexbox:flexWrap="wrap"
+                flexbox:alignItems="flex_start"
+                flexbox:justifyContent="flex_start" />
+
+            <!-- Add More Skills Hint -->
+            <TextView
+                android:id="@+id/addSkillsHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ Add more skills"
+                android:textSize="12sp"
+                android:textColor="#8264FA"
+                android:layout_marginTop="8dp"
+                android:background="?android:attr/selectableItemBackground"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:visibility="gone" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Loading Indicator -->
+    <ProgressBar
+        android:id="@+id/aboutLoadingIndicator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <!-- Bottom spacer -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="32dp" />
+
+</LinearLayout>

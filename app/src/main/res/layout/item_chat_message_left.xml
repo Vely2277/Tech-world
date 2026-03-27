@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:paddingHorizontal="12dp"
+    android:paddingVertical="4dp"
+    android:orientation="horizontal">
+
+    <!-- Avatar -->
+    <ImageView
+        android:id="@+id/avatarImage"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:src="@drawable/ic_avatar_placeholder"
+        android:scaleType="centerCrop"
+        android:background="@drawable/circle_bg"
+        android:layout_gravity="top"
+        android:layout_marginEnd="10dp"
+        android:contentDescription="User avatar" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginEnd="48dp">
+
+        <!-- Sender name and timestamp -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="4dp">
+
+            <TextView
+                android:id="@+id/senderNameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sender"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/timestampText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_tertiary"
+                android:textSize="12sp"
+                android:layout_marginStart="8dp" />
+        </LinearLayout>
+
+        <!-- Job card container -->
+        <LinearLayout
+            android:id="@+id/jobCardContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:visibility="gone">
+            <include layout="@layout/layout_job_card_message" />
+        </LinearLayout>
+
+        <!-- Message image (on top) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/messageImageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp">
+
+            <ImageView
+                android:id="@+id/messageImage"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:contentDescription="Message image" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Message text (below image) -->
+        <TextView
+            android:id="@+id/messageText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_message_left"
+            android:textColor="@color/text_primary"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="10dp"
+            android:textSize="15sp"
+            android:lineSpacingExtra="2dp" />
+    </LinearLayout>
+</LinearLayout>
